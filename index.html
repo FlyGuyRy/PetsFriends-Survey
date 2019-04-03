@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Employee Tracker</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <style>
+        #employee-table th,
+        td {
+            display: inline-block;
+            width: 16.575%;
+        }
+
+        #righteous {
+            font-size: 77px;
+            font-family: 'Righteous', cursive;
+        }
+
+        a:hover {
+            color: black;
+        }
+
+        a:link {
+            color: white;
+        }
+
+        a:visited {
+            color: white;
+        }
+
+        #rightsmall {
+            font-size: 20px;
+            font-family: 'Righteous', cursive;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+
+        <div class="jumbotron" style="background-color: gray; color: white">
+            <h1 class="text-center" id="righteous">PetsFriends</h1>
+            </br>
+            <h3 class="text-center">Thanks for using our app!</h3>
+            <!-- <h3 class="text-center">Please help us improve by filling out this survey</h3> -->
+            <p class="text-center">(If you haven't experienced it yet, follow this link: <a
+                    href="https://node-ninjas.herokuapp.com/" id="rightsmall">PetsFriends</a>)</p>
+        </div>
+
+        <!--
+    <div class="row">
+
+      <div class="col-md-12">
+
+
+        <div class="card mb-4">
+          <div class="card-header">Current Employees</div>
+          <div class="card-body">
+            <table class="table table-sm table-hover" id='employee-table'>
+              <thead>
+                <tr>
+                  <th scope="col">Employee Name</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Months Worked</th>
+                  <th scope="col">Monthly Rate ($)</th>
+                  <th scope="col">Total Billed ($)</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Add Employee  -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3 class="text-center">* Please help us improve by filling out this survey *</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Entry Form -->
+                        <form>
+                            <div class="form-group">
+                                <label for="title-question">Which brand name resonates most with you?</label>
+                                <select class="form-control" id="question-1">
+                                    <option>PetsFriends</option>
+                                    <option>PetConnect</option>
+                                    <option>PetFriends</option>
+                                    <option>PetMatch</option>
+                                    <option>None of these</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="font-question">Which font type do you prefer?</label>
+                                <select class="form-control" id="question-2">
+                                    <option>Righteous</option>
+                                    <option>Script 1</option>
+                                    <option>Helvetica</option>
+                                    <option>Option 4</option>
+                                    <option>None of these</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="background-question">What background style fits best?</label>
+                                <select class="form-control" id="question-3">
+                                    <option>White</option>
+                                    <option>Colorful</option>
+                                    <option>Gradient</option>
+                                    <option>Pattern</option>
+                                    <option>None of these</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-question">Were the forms easy to use?</label>
+                                <select class="form-control" id="question-4">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="results-question">Which results experience is
+                                    preferable?</label>
+                                <select class="form-control" id="question-5">
+                                    <option>Scroll</option>
+                                    <option>Swipe</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="use-question">Would you use, or recommend
+                                    PetsFriends?</label>
+                                <select class="form-control" id="question-6">
+                                    <option>Yes, I love it!</option>
+                                    <option>I'd tell a friend</option>
+                                    <option>It's not really my thing</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rate-question">Please rate your level of interest in using
+                                    PetsFriends.</label>
+                                <select class="form-control" id="question-7">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment-input"></label>
+                                <input class="form-control  form-control-lg" id="rate-input"
+                                    placeholder="Please enter any additional comments you may have." type="text">
+                            </div>
+                        </br></br>
+                        <button class="btn btn-primary btn-lg btn-info btn-block" id="add-employee-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br> </br> </br> </br> </br> </br>
+    </div>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
