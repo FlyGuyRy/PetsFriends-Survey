@@ -4,7 +4,6 @@
 // 2. Create button for adding new employees - then update the html + update the database
 // 3. Create a way to retrieve employees from the employee database.
 // 4. Create a way to calculate the months worked. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in months.
 // 5. Calculate Total billed
 
 // 1. Initialize Firebase
@@ -27,12 +26,12 @@ var config = {
     // Grabs user input
     var question1 = $("#title-question").val().trim();
     var question2 = $("#font-question").val().trim();
-    var question3 = $("background-question").val().trim();
+    var question3 = $("#background-question").val().trim();
     var question4 = $("#form-question").val().trim();
-    var question5 = $("results-question").val().trim();
-    var question6 = $("use-question").val().trim();
-    var question7 = $("rate-question").val().trim();
-    var input1 = $("rate-imput").val().trim();
+    var question5 = $("#results-question").val().trim();
+    var question6 = $("#use-question").val().trim();
+    var question7 = $("#rate-question").val().trim();
+    var input1 = $("#rate-input").val().trim();
     
     // Creates local "temporary" object for holding employee data
     var newSurvey = {
@@ -68,8 +67,8 @@ var config = {
     $("#form-question").val("");
     $("#results-question").val("");
     $("#use-question").val("");
-    $("rate-question").val("");
-    $("#rate-imput").val("");
+    $("#rate-question").val("");
+    $("#rate-input").val("");
   });
   
   // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -81,10 +80,10 @@ var config = {
     var question2 = childSnapshot.val().ques2;
     var question3 = childSnapshot.val().ques3;
     var question4 = childSnapshot.val().ques4;
-    var question4 = childSnapshot.val().ques5;
-    var question4 = childSnapshot.val().ques6;
-    var question4 = childSnapshot.val().ques7;
-    var question4 = childSnapshot.val().inp1;
+    var question5 = childSnapshot.val().ques5;
+    var question6 = childSnapshot.val().ques6;
+    var question7 = childSnapshot.val().ques7;
+    var input1 = childSnapshot.val().inp1;
   
     // Employee Info
     console.log(question1);
@@ -118,5 +117,4 @@ var config = {
   // Assume current date is March 1, 2016
   
   // We know that this is 15 months.
-  // Now we will create code in moment.js to confirm that any attempt we use meets this test case
   
