@@ -20,40 +20,56 @@ var config = {
   
   var database = firebase.database();
   
-  // 2. Button for adding Employees
-  $("#add-employee-btn").on("click", function(event) {
+  // 2. Button for adding survey
+  $("#add-survey-response").on("click", function(event) {
     event.preventDefault();
   
     // Grabs user input
     var question1 = $("#title-question").val().trim();
-    var empRole = $("#font-question").val().trim();
-    var empStart = $("background-question").val().trim();
-    var empRate = $("#rate-input").val().trim();
-  
+    var question2 = $("#font-question").val().trim();
+    var question3 = $("background-question").val().trim();
+    var question4 = $("#form-question").val().trim();
+    var question5 = $("results-question").val().trim();
+    var question6 = $("use-question").val().trim();
+    var question7 = $("rate-question").val().trim();
+    var input1 = $("rate-imput").val().trim();
+    
     // Creates local "temporary" object for holding employee data
-    var newEmp = {
-      name: empName,
-      role: empRole,
-      start: empStart,
-      rate: empRate
+    var newSurvey = {
+      ques1: question1,
+      ques2: question2,
+      ques3: question3,
+      ques4: question4,
+      ques5: question5,
+      ques6: question6,
+      ques7: question7,
+      inp1: input1
     };
   
     // Uploads employee data to the database
-    database.ref().push(newEmp);
+    database.ref().push(newSurvey);
   
     // Logs everything to console
-    console.log(newEmp.name);
-    console.log(newEmp.role);
-    console.log(newEmp.start);
-    console.log(newEmp.rate);
+    console.log(newSurvey.ques1);
+    console.log(newSurvey.ques2);
+    console.log(newSurvey.ques3);
+    console.log(newSurvey.ques4);
+    console.log(newSurvey.ques5);
+    console.log(newSurvey.ques6);
+    console.log(newSurvey.ques7);
+    console.log(newSurvey.inp1);
   
-    alert("Employee successfully added");
+    alert("Thank you for your input!");
   
     // Clears all of the text-boxes
-    $("#employee-name-input").val("");
-    $("#role-input").val("");
-    $("#start-input").val("");
-    $("#rate-input").val("");
+    $("#title-question").val("");
+    $("#front-question").val("");
+    $("#background-question").val("");
+    $("#form-question").val("");
+    $("#results-question").val("");
+    $("#use-question").val("");
+    $("rate-question").val("");
+    $("#rate-imput").val("");
   });
   
   // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -61,29 +77,39 @@ var config = {
     console.log(childSnapshot.val());
   
     // Store everything into a variable.
-    var empName = childSnapshot.val().name;
-    var empRole = childSnapshot.val().role;
-    var empStart = childSnapshot.val().start;
-    var empRate = childSnapshot.val().rate;
+    var question1 = childSnapshot.val().ques1;
+    var question2 = childSnapshot.val().ques2;
+    var question3 = childSnapshot.val().ques3;
+    var question4 = childSnapshot.val().ques4;
+    var question4 = childSnapshot.val().ques5;
+    var question4 = childSnapshot.val().ques6;
+    var question4 = childSnapshot.val().ques7;
+    var question4 = childSnapshot.val().inp1;
   
     // Employee Info
-    console.log(empName);
-    console.log(empRole);
-    console.log(empStart);
-    console.log(empRate);
+    console.log(question1);
+    console.log(question2);
+    console.log(question3);
+    console.log(question4);
+    console.log(question5);
+    console.log(question6);
+    console.log(question7);
+    console.log(input1);
    
     // Create the new row
-    var newRow = $("<tr>").append(
-      $("<td>").text(empName),
-      $("<td>").text(empRole),
-      $("<td>").text(empStartPretty),
-      $("<td>").text(empMonths),
-      $("<td>").text(empRate),
-      $("<td>").text(empBilled)
-    );
+    // var newRow = $("<tr>").append(
+    //   $("<td>").text(question1),
+    //   $("<td>").text(question2),
+    //   $("<td>").text(question3),
+    //   $("<td>").text(question4),
+    //   $("<td>").text(question5),
+    //   $("<td>").text(question6),
+    //   $("<td>").text(question7),
+    //   $("<td>").text(input1)
+    // );
   
     // Append the new row to the table
-    $(".card-body").append(newRow);
+    // $(".card-body").append(newRow);
   });
   
   // Example Time Math
