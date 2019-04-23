@@ -8,7 +8,7 @@
 
 // 1. Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCbq8leWlS9t1LMEP48mIKBgEY1PjVwJro",
+  apiKey: API_KEY,
   authDomain: "petsfriends-survey.firebaseapp.com",
   databaseURL: "https://petsfriends-survey.firebaseio.com",
   projectId: "petsfriends-survey",
@@ -19,6 +19,9 @@ var config = {
   
   var database = firebase.database();
   
+  //gitignore property
+  var apiKey = config.API_KEY;
+
   // 2. Button for adding survey
   $("#add-survey-response").on("click", function(event) {
     event.preventDefault();
